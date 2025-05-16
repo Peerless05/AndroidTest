@@ -23,21 +23,6 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="240sp"
-            android:layout_height="36dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="372dp"
-            android:background="@drawable/edittext_bg"
-            android:backgroundTint="@android:color/holo_orange_light"
-            android:hint="Username"
-            android:fontFamily="@font/pixelify_sans"
-            android:padding="12dp"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/darker_gray"
-            android:textSize="12dp" />
 
         <EditText
             android:id="@+id/password"
