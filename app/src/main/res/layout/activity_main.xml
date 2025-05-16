@@ -7,14 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Fixed background image -->
-    <ImageView
-        android:layout_width="448dp"
-        android:layout_height="997dp"
-        android:src="@drawable/pokedex_bg"
-        android:scaleType="centerCrop"
-        android:contentDescription="background"
-        android:adjustViewBounds="true" />
+
 
     <!-- Foreground UI layout -->
     <LinearLayout
