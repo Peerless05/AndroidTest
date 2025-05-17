@@ -1,6 +1,7 @@
 package com.example.madproject;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
     private CallbackManager callbackManager;
 
+    private MediaPlayer bgMusic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -72,10 +75,15 @@ public class MainActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.password);
         usernameInput = findViewById(R.id.username);
         googleLogin = findViewById(R.id.google);
-        facebookLogin = findViewById(R.id.facebook); // Add this in your XML layout
+        facebookLogin = findViewById(R.id.facebook);
+
+        // Play background music
+        bgMusic = MediaPlayer.create(this, R.raw.pokedexmusic);
+        bgMusic.setLooping(true);
+        bgMusic.start();
 
         signIntxt.setOnClickListener(v -> {
-            Toast.makeText(MainActivity.this, "Register clicked", Toast.LENGTH_SHORT).show();
+            stopMusic();
             startActivity(new Intent(MainActivity.this, Register.class));
         });
 
@@ -85,13 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Google Sign-In configuration
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.client_id)) // from strings.xml
+                .requestIdToken(getString(R.string.client_id))
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
         googleLogin.setOnClickListener(v -> {
-            Toast.makeText(MainActivity.this, "Google login clicked", Toast.LENGTH_SHORT).show();
             Intent signInIntent = googleSignInClient.getSignInIntent();
             startActivityForResult(signInIntent, RC_SIGN_IN);
         });
@@ -165,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                                         if (documentSnapshot.exists()) {
                                             String storedUsername = documentSnapshot.getString("username");
                                             if (storedUsername != null && storedUsername.equals(enteredUsername)) {
+                                                stopMusic();
                                                 Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(MainActivity.this, Pokedex.class));
                                                 finish();
@@ -244,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        stopMusic();
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(MainActivity.this, "Signed in as: " + user.getEmail(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, Pokedex.class));
@@ -259,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        stopMusic();
                         FirebaseUser user = mAuth.getCurrentUser();
                         Toast.makeText(MainActivity.this, "Signed in as: " + user.getEmail(), Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, Pokedex.class));
@@ -272,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data); // Facebook
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -283,6 +293,40 @@ public class MainActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (bgMusic != null && bgMusic.isPlaying()) {
+            bgMusic.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (bgMusic != null) {
+            bgMusic.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bgMusic != null) {
+            bgMusic.stop();
+            bgMusic.release();
+            bgMusic = null;
+        }
+    }
+
+    private void stopMusic() {
+        if (bgMusic != null) {
+            bgMusic.stop();
+            bgMusic.release();
+            bgMusic = null;
         }
     }
 }

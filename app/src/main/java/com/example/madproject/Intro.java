@@ -32,10 +32,10 @@ public class Intro extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize views and click listeners immediately
+        // Initialize views and click listeners
         initialize();
 
-        // Start background music and loop it
+        // Start and loop background music
         bgMusic = MediaPlayer.create(this, R.raw.pokedexmusic);
         bgMusic.setLooping(true);
         bgMusic.start();
@@ -46,28 +46,31 @@ public class Intro extends AppCompatActivity {
         accBtn = findViewById(R.id.accBtn);
 
         loginText.setOnClickListener(v -> {
+            stopMusic();
             Toast.makeText(Intro.this, "Login clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Intro.this, MainActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(Intro.this, MainActivity.class));
+            finish(); // Optional: closes Intro to prevent returning to it
         });
 
         accBtn.setOnClickListener(v -> {
+            stopMusic();
             Toast.makeText(Intro.this, "Register clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Intro.this, Register.class);
-            startActivity(intent);
+            startActivity(new Intent(Intro.this, Register.class));
+            finish(); // Optional
         });
+    }
+
+    private void stopMusic() {
+        if (bgMusic != null && bgMusic.isPlaying()) {
+            bgMusic.stop();
+            bgMusic.release();
+            bgMusic = null;
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Release MediaPlayer resources properly
-        if (bgMusic != null) {
-            if (bgMusic.isPlaying()) {
-                bgMusic.stop();
-            }
-            bgMusic.release();
-            bgMusic = null;
-        }
+        stopMusic(); // Ensures cleanup in case activity is killed unexpectedly
     }
 }

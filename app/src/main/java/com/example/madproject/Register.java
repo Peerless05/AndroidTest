@@ -1,6 +1,7 @@
 package com.example.madproject;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -25,6 +26,8 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
 
+    private MediaPlayer bgMusic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,11 @@ public class Register extends AppCompatActivity {
         confirmPasswordEditText = findViewById(R.id.confirmPassword);
         favoritePokemonEditText = findViewById(R.id.favoritePokemon);
         signupBtn = findViewById(R.id.signupBtn);
+
+        // Play background music
+        bgMusic = MediaPlayer.create(this, R.raw.pokedexmusic);
+        bgMusic.setLooping(true);
+        bgMusic.start();
 
         signupBtn.setOnClickListener(v -> registerUser());
     }
@@ -78,21 +86,16 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        // Disable the signup button while processing to prevent multiple clicks
         signupBtn.setEnabled(false);
 
-        // Create user with Firebase Auth
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
-                    signupBtn.setEnabled(true); // Re-enable button regardless of success/failure
-
+                    signupBtn.setEnabled(true);
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = mAuth.getCurrentUser();
                         if (firebaseUser != null) {
-                            // Send email verification and wait for success/failure before proceeding
                             firebaseUser.sendEmailVerification()
                                     .addOnSuccessListener(aVoid -> {
-                                        // Save additional user data to Firestore only after verification email sent
                                         Map<String, Object> userData = new HashMap<>();
                                         userData.put("username", username);
                                         userData.put("email", email);
@@ -104,7 +107,7 @@ public class Register extends AppCompatActivity {
                                                 .addOnSuccessListener(aVoid1 -> {
                                                     Toast.makeText(Register.this, "Registered successfully! Please verify your email before logging in.", Toast.LENGTH_LONG).show();
 
-                                                    // Go to Login screen after registration
+                                                    stopMusic(); // stop music before going to login screen
                                                     Intent intent = new Intent(Register.this, MainActivity.class);
                                                     startActivity(intent);
                                                     finish();
@@ -113,13 +116,48 @@ public class Register extends AppCompatActivity {
                                     })
                                     .addOnFailureListener(e -> {
                                         Toast.makeText(Register.this, "Failed to send verification email: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                                        // Optionally, you may delete the created user if email verification fails
-                                        firebaseUser.delete();
+                                        if (firebaseUser != null) {
+                                            firebaseUser.delete();
+                                        }
                                     });
                         }
                     } else {
                         Toast.makeText(Register.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (bgMusic != null && bgMusic.isPlaying()) {
+            bgMusic.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (bgMusic != null) {
+            bgMusic.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bgMusic != null) {
+            bgMusic.stop();
+            bgMusic.release();
+            bgMusic = null;
+        }
+    }
+
+    private void stopMusic() {
+        if (bgMusic != null) {
+            bgMusic.stop();
+            bgMusic.release();
+            bgMusic = null;
+        }
     }
 }
