@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MAD Project</string>
+    <string name="client_id">496821585491-6q1gedjadungr5cppo9259u4d7sg6nb9.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1230813725303005</string>
+    <string name="facebook_client_token">9bdf30adeb7939b40b14e111005aa8e5</string>
 </resources>
