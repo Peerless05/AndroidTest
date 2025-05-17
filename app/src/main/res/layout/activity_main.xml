@@ -90,7 +90,7 @@
             android:layout_marginTop="9sp"
             android:fontFamily="@font/pixelify_sans"
             android:gravity="center"
-            android:text="Connect with:"
+            android:text="Login with:"
             android:textColor="@color/black"
             android:textSize="17dp"
             android:textStyle="bold" />

@@ -22,7 +22,7 @@
         android:padding="24dp">
 
         <Button
-            android:id="@+id/loginBtn"
+            android:id="@+id/accBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -48,6 +48,7 @@
             android:textSize="17dp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/loginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -55,8 +56,9 @@
             android:fontFamily="@font/pixelify_sans"
             android:text="LOGIN"
             android:textColor="@color/white"
-            android:textSize="20dp"/>
-
-
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 </FrameLayout>
