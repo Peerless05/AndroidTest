@@ -22,10 +22,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="24dp">
+
         <EditText
             android:id="@+id/username"
             android:layout_width="240sp"
-
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="354dp"
@@ -37,10 +37,10 @@
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/darker_gray"
             android:textSize="20dp" />
+
         <EditText
             android:id="@+id/email"
             android:layout_width="240sp"
-
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
@@ -52,8 +52,6 @@
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/darker_gray"
             android:textSize="20dp" />
-
-
 
         <EditText
             android:id="@+id/password"
@@ -113,8 +111,6 @@
             android:textSize="14dp"
             android:layout_gravity="center"
             android:textColor="@color/black"/>
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

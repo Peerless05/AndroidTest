@@ -30,11 +30,17 @@
             android:backgroundTint="@color/white"
             android:backgroundTintMode="add"
             android:text="Create an Account"
-
             android:fontFamily="@font/pixelify_sans"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pikachu"
+            />
 
         <TextView
             android:id="@+id/forgotPassword"
