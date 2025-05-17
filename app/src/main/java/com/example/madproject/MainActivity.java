@@ -1,5 +1,6 @@
 package com.example.madproject;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -25,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-        // Set padding for system bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -41,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         signIntxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
             }
         });
 
@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Start background music
-        backgroundMusic = MediaPlayer.create(this, R.raw.pokedexmusic);
-        backgroundMusic.setLooping(true);
-        backgroundMusic.start();
+//        // Start background music
+//        backgroundMusic = MediaPlayer.create(this, R.raw.pokedexmusic);
+//        backgroundMusic.setLooping(true);
+//        backgroundMusic.start();
     }
 
     @Override

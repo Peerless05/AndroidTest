@@ -48,7 +48,8 @@ public class Intro extends AppCompatActivity {
         });
 
         accBtn.setOnClickListener(v -> {
-            // Add intent to registration screen if needed
+            Intent intent = new Intent (Intro.this, Register.class);
+            startActivity(intent);
         });
     }
 
