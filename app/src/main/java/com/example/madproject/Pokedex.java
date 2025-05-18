@@ -1,7 +1,6 @@
 package com.example.madproject;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -68,30 +67,21 @@ public class Pokedex extends AppCompatActivity {
         navView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
-            if (id == R.id.typesnav) {
-                Toast.makeText(Pokedex.this, "Types", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
-                startActivity(intent);
-                return true;
+            if (id == R.id.searchnav) {
+                String query = input.getText().toString().trim();
+                if (!query.isEmpty()) {
+                    resetProgressBars();
+                    fetchPokemonData(query);
+                } else {
+                    Toast.makeText(this, "Enter Pokémon name or ID", Toast.LENGTH_SHORT).show();
+                }
             } else if (id == R.id.homefavnav) {
-                Toast.makeText(Pokedex.this, "Favorites", Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
-                //startActivity(intent);
+                // GO TO FAVORITES HOME PAGE (WALA PA)
                 return true;
             } else if (id == R.id.clearnav) {
-                Toast.makeText(Pokedex.this, "Clear", Toast.LENGTH_SHORT).show();
                 resetUI();
             } else if (id == R.id.logoutnav) {
-                Toast.makeText(Pokedex.this, "Logout", Toast.LENGTH_SHORT).show();
-                getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
-                        .edit()
-                        .clear()
-                        .apply();
-                Toast.makeText(Pokedex.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Pokedex.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
+                // Handle Logout WALA PA
                 return true;
             }
             return false;
