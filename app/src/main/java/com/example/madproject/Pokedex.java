@@ -77,6 +77,7 @@ public class Pokedex extends AppCompatActivity {
                 Toast.makeText(Pokedex.this, "Favorites", Toast.LENGTH_SHORT).show();
                 //Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
                 //startActivity(intent);
+                Toast.makeText(Pokedex.this, "Home", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.clearnav) {
                 Toast.makeText(Pokedex.this, "Clear", Toast.LENGTH_SHORT).show();
