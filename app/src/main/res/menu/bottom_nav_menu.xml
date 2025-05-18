@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homefavnav"
+        android:icon="@drawable/unfav"
+        android:title="Favorites"
+         />
+
+    <item
+        android:id="@+id/searchnav"
+        android:icon="@drawable/search"
+        android:title="Search"
+         />
+    <item
+            android:id="@id/none"
+
+        android:title=" "
+        />
+
+    <item
+        android:id="@+id/clearnav"
+        android:icon="@drawable/clear"
+        android:title="Clear"
+         />
+    <item
+        android:id="@+id/logoutnav"
+        android:icon="@drawable/logout"
+        android:title="Logout"
+        />
+
+</menu>

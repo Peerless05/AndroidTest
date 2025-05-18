@@ -9,6 +9,9 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -52,6 +55,37 @@ public class Pokedex extends AppCompatActivity {
         specialAttackBar = findViewById(R.id.special_bar);
         specialDefenseBar = findViewById(R.id.special_defense_bar);
         speedBar = findViewById(R.id.speed_bar);
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.fav);
+        badgeDrawable.setNumber(4);   //Change me depende sa dami ng pokemon na meron si User if kaya
+        badgeDrawable.setVisible(true);
+
+        BottomNavigationView navView = findViewById(R.id.bottomNavigation); // your view ID
+        navView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.searchnav) {
+                String query = input.getText().toString().trim();
+                if (!query.isEmpty()) {
+                    resetProgressBars();
+                    fetchPokemonData(query);
+                } else {
+                    Toast.makeText(this, "Enter Pokémon name or ID", Toast.LENGTH_SHORT).show();
+                }
+            } else if (id == R.id.homefavnav) {
+                // GO TO FAVORITES HOME PAGE (WALA PA)
+                return true;
+            } else if (id == R.id.clearnav) {
+                resetUI();
+            } else if (id == R.id.logoutnav) {
+                // Handle Logout WALA PA
+                return true;
+            }
+            return false;
+        });
 
         search.setOnClickListener(v -> {
             String query = input.getText().toString().trim();

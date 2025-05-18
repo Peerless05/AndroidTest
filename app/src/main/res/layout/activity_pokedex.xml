@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FD4747">
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -10,29 +17,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
         android:background="#BF392B">
 
-        <pl.droidsonroids.gif.GifImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/pikachu"
-            />
+            android:layout_height="100dp"
+            android:background="@drawable/topheader"
+            android:paddingLeft="25dp"
+            android:paddingTop="16dp">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/pixelify_sans_bold"
-            android:text="Welcome to Pokedex!"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            <ImageButton
+                android:id="@+id/homefav"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/home"
+                android:contentDescription="Favorite Button" />
 
-            />
+            <ImageButton
+                android:id="@+id/logout"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="-1dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/logout2"
+                android:contentDescription="Logout" />
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/enter"
@@ -46,6 +58,8 @@
             android:background="@drawable/rounded_edittext"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:shadowColor="#000000"
             />
 
@@ -69,6 +83,7 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:textSize="20sp"
                 android:textColor="#FFF"
+                android:layout_marginLeft="20dp"
                 android:backgroundTint="#FF7C25" />
 
             <Space
@@ -86,6 +101,7 @@
                 android:fontFamily="@font/pixelify_sans_bold"
                 android:textSize="20sp"
                 android:textColor="#FFF"
+                android:layout_marginRight="20dp"
                 android:backgroundTint="#2D3F50" />
         </LinearLayout>
 
@@ -94,6 +110,9 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/white">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,7 +130,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/white"
-                android:padding="16dp">
+                android:padding="16dp"
+                >
 
                 <TextView
                     android:id="@+id/id"
@@ -458,3 +478,36 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 </ScrollView>
+
+<com.google.android.material.bottomappbar.BottomAppBar
+android:id="@+id/bottomMenu"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+app:fabAlignmentMode="center"
+app:fabAnchorMode="cradle"
+android:layout_gravity="bottom"
+app:fabCradleMargin="14dp"
+app:fabCradleVerticalOffset="20dp"
+app:fabCradleRoundedCornerRadius="6dp"
+    />
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+android:id="@+id/bottomNavigation"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+app:menu="@menu/bottom_nav_menu"
+android:layout_gravity="bottom"
+app:labelVisibilityMode="labeled"
+android:background="@android:color/transparent"
+android:elevation="0dp"/>
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:id="@+id/fav"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+app:layout_anchor="@id/bottomMenu"
+android:src="@drawable/pokeballnothing"/>
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
