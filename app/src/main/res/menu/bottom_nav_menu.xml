@@ -7,13 +7,12 @@
          />
 
     <item
-        android:id="@+id/searchnav"
-        android:icon="@drawable/search"
-        android:title="Search"
+        android:id="@+id/typesnav"
+        android:icon="@drawable/img"
+        android:title="Types"
          />
     <item
-            android:id="@id/none"
-
+        android:id="@id/none"
         android:title=" "
         />
 

@@ -14,38 +14,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADProject"
         tools:targetApi="31">
-
-        <!-- Facebook SDK Meta-data -->
+        <activity
+            android:name=".PokemonTypeAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".PokemonTypeLibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PokemonAdapter"
+            android:exported="false" /> <!-- Facebook SDK Meta-data -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.facebook.sdk.ClientToken"
-            android:value="@string/facebook_client_token" />
-
-        <!-- Facebook Activity -->
+            android:value="@string/facebook_client_token" /> <!-- Facebook Activity -->
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            android:exported="true" />
-
-        <!-- Facebook Content Provider -->
+            android:exported="true"
+            android:label="@string/app_name" /> <!-- Facebook Content Provider -->
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProviderYOUR_FACEBOOK_APP_ID"
-            android:exported="true" />
-
-        <!-- Your App Activities -->
-        <activity android:name=".Pokedex" android:exported="false" />
-        <activity android:name=".Register" android:exported="false" />
-        <activity android:name=".Intro" android:exported="true">
+            android:exported="true" /> <!-- Your App Activities -->
+        <activity
+            android:name=".Pokedex"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Intro"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

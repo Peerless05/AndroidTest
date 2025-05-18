@@ -55,6 +55,7 @@
             android:fontFamily="@font/pixelify_sans_bold"
             android:textStyle="bold"
             android:textAlignment="center"
+            android:maxLines="1"
             android:background="@drawable/rounded_edittext"
             android:textColor="@color/black"
             android:textSize="20sp"

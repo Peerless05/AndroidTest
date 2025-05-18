@@ -45,6 +45,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
     implementation("com.facebook.android:facebook-android-sdk:11.0.0")
     implementation("com.facebook.android:facebook-login:latest.release")
