@@ -12,7 +12,6 @@
         android:title="Types"
         />
     <item
-
         android:id="@id/none"
         android:title=" "
         />
