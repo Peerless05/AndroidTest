@@ -1,6 +1,7 @@
 package com.example.madproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -81,7 +82,20 @@ public class Pokedex extends AppCompatActivity {
             } else if (id == R.id.clearnav) {
                 resetUI();
             } else if (id == R.id.logoutnav) {
-                // Handle Logout WALA PA
+                // Clear SharedPreferences or any session storage
+                getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+                        .edit()
+                        .clear()
+                        .apply();
+
+                // Show confirmation
+                Toast.makeText(Pokedex.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+                // Navigate to LoginActivity and clear backstack
+                Intent intent = new Intent(Pokedex.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
                 return true;
             }
             return false;

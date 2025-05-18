@@ -491,23 +491,22 @@ app:fabCradleVerticalOffset="20dp"
 app:fabCradleRoundedCornerRadius="6dp"
     />
 
-<com.google.android.material.bottomnavigation.BottomNavigationView
-android:id="@+id/bottomNavigation"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-app:menu="@menu/bottom_nav_menu"
-android:layout_gravity="bottom"
-app:labelVisibilityMode="labeled"
-android:background="@android:color/transparent"
-android:elevation="0dp"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_anchor="@+id/bottomMenu"
+        app:layout_anchorGravity="center"
+        app:menu="@menu/bottom_nav_menu" />
 
-<com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
 android:id="@+id/fav"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 app:layout_anchor="@id/bottomMenu"
 android:src="@drawable/pokeballnothing"/>
-
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
