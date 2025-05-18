@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FD4747">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#E93B3B"
+    android:background="@drawable/librarybg"
+
     android:padding="8dp">
 
     <!-- Horizontal layout for type list and Pokémon list -->
@@ -11,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+
         android:orientation="horizontal">
 
         <!-- Vertical list of types -->
@@ -44,4 +52,52 @@
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:visibility="visible" />
+
+
+
+
 </LinearLayout>
+
+
+<com.google.android.material.bottomappbar.BottomAppBar
+android:id="@+id/bottomMenu"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+app:fabAlignmentMode="center"
+app:fabAnchorMode="cradle"
+android:layout_gravity="bottom"
+app:fabCradleMargin="14dp"
+app:fabCradleVerticalOffset="10dp"
+app:fabCradleRoundedCornerRadius="6dp"
+    />
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+android:id="@+id/bottomNavigation"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_gravity="bottom"
+android:background="@android:color/transparent"
+android:elevation="0dp"
+app:labelVisibilityMode="labeled"
+app:layout_anchor="@+id/bottomMenu"
+app:layout_anchorGravity="center"
+app:menu="@menu/bottom_nav_library" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fav"
+    android:layout_width="600dp"
+    android:layout_height="60dp"
+    app:layout_anchor="@id/bottomMenu"
+    android:backgroundTint="@android:color/transparent"
+
+    android:elevation="0dp"
+    app:elevation="0dp"
+    app:hoveredFocusedTranslationZ="0dp"
+    app:pressedTranslationZ="0dp"
+
+    />
+
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>

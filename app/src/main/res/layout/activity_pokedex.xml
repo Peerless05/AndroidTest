@@ -513,7 +513,7 @@ app:fabAlignmentMode="center"
 app:fabAnchorMode="cradle"
 android:layout_gravity="bottom"
 app:fabCradleMargin="14dp"
-app:fabCradleVerticalOffset="20dp"
+app:fabCradleVerticalOffset="10dp"
 app:fabCradleRoundedCornerRadius="6dp"
     />
 
