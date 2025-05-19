@@ -1,5 +1,6 @@
 package com.example.madproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,6 +66,39 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
 
         // Load types
         loadPokemonTypes();
+
+        // Setup BottomNavigationView
+        BottomNavigationView navView = findViewById(R.id.bottomNavigation); // Make sure this ID exists in your layout
+        navView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.typesnav) {
+                Toast.makeText(PokemonTypeLibraryActivity.this, "Types", Toast.LENGTH_SHORT).show();
+                return true; // Already here
+            } else if (id== R.id.homefavnav) {
+                
+            } else if (id == R.id.homenav) {
+                Toast.makeText(PokemonTypeLibraryActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(PokemonTypeLibraryActivity.this, Pokedex.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); // Bring Pokedex to front without restarting it
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.logoutnav) {
+                Toast.makeText(PokemonTypeLibraryActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
+                        .edit()
+                        .clear()
+                        .apply();
+                Toast.makeText(PokemonTypeLibraryActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(PokemonTypeLibraryActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void loadPokemonTypes() {
