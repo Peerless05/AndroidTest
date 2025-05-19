@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,10 +7,11 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="448dp"
-        android:layout_height="997dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/intro"
         android:scaleType="centerCrop"
+        android:layout_gravity="center"
         android:contentDescription="background"
         android:adjustViewBounds="true" />
 
@@ -26,43 +26,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="630sp"
+            android:layout_marginTop="630dp"
             android:backgroundTint="@color/white"
             android:backgroundTintMode="add"
             android:text="Create an Account"
             android:fontFamily="@font/pixelify_sans"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/pikachu"
-            />
+            android:src="@drawable/pikachu" />
 
         <TextView
             android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="9sp"
+            android:layout_marginTop="9dp"
             android:fontFamily="@font/pixelify_sans"
             android:text="Already got an Account ?"
             android:textColor="@color/white"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/loginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="9sp"
+            android:layout_marginTop="9dp"
             android:fontFamily="@font/pixelify_sans"
             android:text="LOGIN"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:clickable="true"
             android:focusable="true" />

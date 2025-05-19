@@ -17,6 +17,8 @@
         <activity
             android:name=".PokemonTypeAdapter"
             android:exported="false" />
+        <activity android:name=".FavoritesActivity"
+            android:exported="false" />
         <activity
             android:name=".PokemonTypeLibraryActivity"
             android:exported="false" />

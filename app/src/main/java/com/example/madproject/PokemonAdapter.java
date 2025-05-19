@@ -32,11 +32,11 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         Pokemon pokemon = pokemonList.get(position);
         Context context = holder.itemView.getContext();
 
-        holder.nameText.setText(capitalize(pokemon.name));
-        holder.idText.setText("#" + pokemon.id);
+        holder.nameText.setText(capitalize(pokemon.getName()));
+        holder.idText.setText("#" + pokemon.getId());
 
         Glide.with(context)
-                .load(pokemon.imageUrl)
+                .load(pokemon.getImageUrl())
                 .into(holder.imageView);
     }
 

@@ -76,7 +76,8 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
                 return true;
             } else if (id == R.id.homefavnav) {
                 Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
-                // TODO: Navigate to Favorites screen
+                Intent intent = new Intent(this, FavoritesActivity.class);
+                startActivity(intent);
                 return true;
             } else if (id == R.id.homenav) {
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
@@ -169,7 +170,7 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
                         String id = parts[parts.length - 1].isEmpty() ? parts[parts.length - 2] : parts[parts.length - 1];
                         String imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
 
-                        pokemonList.add(new Pokemon(name, id, imageUrl));
+                        pokemonList.add(new Pokemon(name, Integer.parseInt(id), imageUrl));
                     }
 
                     runOnUiThread(() -> {

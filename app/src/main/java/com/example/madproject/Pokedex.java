@@ -2,6 +2,7 @@ package com.example.madproject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class Pokedex extends AppCompatActivity {
 
     private EditText input;
     private Button search, clear;
+    private ImageButton unfav;
     private TextView idText, nameText, type1Text, type2Text;
     private TextView hpText, attackText, defenseText, specialAttackText, specialDefenseText, speedText;
     private ImageView imageView;
@@ -39,6 +41,7 @@ public class Pokedex extends AppCompatActivity {
         input = findViewById(R.id.enter);
         search = findViewById(R.id.search);
         clear = findViewById(R.id.clear);
+        unfav = findViewById(R.id.unfav);
         idText = findViewById(R.id.id);
         nameText = findViewById(R.id.name);
         type1Text = findViewById(R.id.type1);
@@ -73,14 +76,11 @@ public class Pokedex extends AppCompatActivity {
                 Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
                 startActivity(intent);
                 return true;
-
             } else if (id == R.id.homefavnav) {
                 // Navigate to Favorites Activity
                 Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(Pokedex.this, FavoritesActivity.class); // Make sure you create this activity
-                //startActivity(intent);
+                startActivity(new Intent(this, FavoritesActivity.class));
                 return true;
-
             } else if (id == R.id.homenav) {
                 Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, Pokedex.class);
@@ -118,6 +118,13 @@ public class Pokedex extends AppCompatActivity {
                 Toast.makeText(this, "Enter Pokémon name or ID", Toast.LENGTH_SHORT).show();
             }
         });
+        unfav.setOnClickListener(v -> {
+            String name = nameText.getText().toString().replace("NAME 👆: ", "");
+            if (!name.equals("Name")) {
+                saveToFavorites(name);
+                Toast.makeText(Pokedex.this, name + " added to favorites!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         clear.setOnClickListener(v -> resetUI());
     }
@@ -149,6 +156,13 @@ public class Pokedex extends AppCompatActivity {
         specialAttackText.setText("Special Attack 🔥: 0");
         specialDefenseText.setText("Special Defense 🔲: 0");
         speedText.setText("Speed 💨: 0");
+    }
+
+    private void saveToFavorites(String pokemonName) {
+        SharedPreferences prefs = getSharedPreferences("favorites", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(pokemonName.toLowerCase(), true); // You can also store JSON if more data is needed
+        editor.apply();
     }
 
     private void showLoading() {
