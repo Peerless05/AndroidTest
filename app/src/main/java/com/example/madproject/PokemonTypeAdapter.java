@@ -57,24 +57,24 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<PokemonTypeAdapter.
 
     private int getTypeColor(String type, Context context) {
         switch (type.toLowerCase()) {
-            case "fire": return Color.parseColor("#F08030");
-            case "water": return Color.parseColor("#6890F0");
-            case "grass": return Color.parseColor("#78C850");
-            case "electric": return Color.parseColor("#F8D030");
-            case "psychic": return Color.parseColor("#F85888");
-            case "ice": return Color.parseColor("#98D8D8");
-            case "dragon": return Color.parseColor("#7038F8");
-            case "dark": return Color.parseColor("#705848");
-            case "fairy": return Color.parseColor("#EE99AC");
-            case "normal": return Color.parseColor("#A8A878");
-            case "fighting": return Color.parseColor("#C03028");
-            case "flying": return Color.parseColor("#A890F0");
-            case "poison": return Color.parseColor("#A040A0");
-            case "ground": return Color.parseColor("#E0C068");
-            case "rock": return Color.parseColor("#B8A038");
-            case "bug": return Color.parseColor("#A8B820");
-            case "ghost": return Color.parseColor("#705898");
-            case "steel": return Color.parseColor("#B8B8D0");
+            case "normal": return Color.parseColor("#A8A77A");     // Soft Olive
+            case "fire": return Color.parseColor("#EE8130");       // Warm Orange
+            case "water": return Color.parseColor("#6390F0");      // Clear Blue
+            case "electric": return Color.parseColor("#F7D02C");   // Soft Gold
+            case "grass": return Color.parseColor("#7AC74C");      // Fresh Green
+            case "ice": return Color.parseColor("#96D9D6");        // Cool Cyan
+            case "fighting": return Color.parseColor("#C22E28");   // Brick Red
+            case "poison": return Color.parseColor("#A33EA1");     // Vivid Purple
+            case "ground": return Color.parseColor("#E2BF65");     // Sand
+            case "flying": return Color.parseColor("#A98FF3");     // Sky Lavender
+            case "psychic": return Color.parseColor("#F95587");    // Pink Rose
+            case "bug": return Color.parseColor("#A6B91A");        // Avocado Green
+            case "rock": return Color.parseColor("#B6A136");       // Amber Stone
+            case "ghost": return Color.parseColor("#735797");      // Faded Indigo
+            case "dragon": return Color.parseColor("#6F35FC");     // Royal Purple
+            case "dark": return Color.parseColor("#705746");       // Deep Brown
+            case "steel": return Color.parseColor("#B7B7CE");      // Metallic Lavender
+            case "fairy": return Color.parseColor("#D685AD");      // Light Pink
             default: return ContextCompat.getColor(context, android.R.color.darker_gray);
         }
     }

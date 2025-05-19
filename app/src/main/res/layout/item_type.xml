@@ -19,6 +19,8 @@
         android:background="@drawable/type_text_background"
         android:text="TYPE"
         android:textStyle="bold"
+        android:fontFamily="@font/pixelify_sans_bold"
+        android:maxLines="1"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         android:letterSpacing="0.05"

@@ -12,11 +12,6 @@
         android:title="Types"
         />
     <item
-        android:id="@id/none"
-        android:title=" "
-        />
-
-    <item
         android:id="@+id/homenav"
         android:icon="@drawable/homenav"
         android:title="Home"

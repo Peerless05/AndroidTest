@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FD4747">
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -356,7 +356,7 @@
                             android:fontFamily="@font/pixelify_sans_bold"
                             android:text="Defense 🛡: 0"
                             android:textColor="#000000"
-                            android:textSize="18sp"
+                            android:textSize="21sp"
                             android:textStyle="bold" />
 
                         <ProgressBar
@@ -484,7 +484,6 @@
                             android:textColor="#000000"
                             android:textSize="18sp"
                             android:textStyle="bold" />
-
                         <ProgressBar
                             android:id="@+id/speed_bar"
                             style="?android:attr/progressBarStyleHorizontal"
@@ -496,9 +495,7 @@
                             android:progress="0"
                             android:progressTint="#1c00c3" />
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
-                <!-- End of Stats section -->
             </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -514,25 +511,23 @@ app:fabAnchorMode="cradle"
 android:layout_gravity="bottom"
 app:fabCradleMargin="14dp"
 app:fabCradleVerticalOffset="10dp"
-app:fabCradleRoundedCornerRadius="6dp"
-    />
+app:fabCradleRoundedCornerRadius="6dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@android:color/transparent"
-        android:elevation="0dp"
+        android:background="@color/white"
         app:labelVisibilityMode="labeled"
-        app:layout_anchor="@+id/bottomMenu"
-        app:layout_anchorGravity="center"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
         app:menu="@menu/bottom_nav_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-android:id="@+id/fav"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-app:layout_anchor="@id/bottomMenu"
-android:src="@drawable/pokeballnothing"/>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:id="@+id/fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/bottomMenu"
+        android:src="@drawable/pokeballnothing"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

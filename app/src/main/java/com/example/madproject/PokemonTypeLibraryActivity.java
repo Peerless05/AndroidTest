@@ -40,8 +40,6 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
 
     OkHttpClient client = new OkHttpClient();
 
-    boolean typeClicked = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,33 +62,32 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
         // Show default instruction
         showMessage("Please select a Pokémon type.");
 
-        // Load types
+        // Load Pokémon types from API
         loadPokemonTypes();
 
         // Setup BottomNavigationView
-        BottomNavigationView navView = findViewById(R.id.bottomNavigation); // Make sure this ID exists in your layout
+        BottomNavigationView navView = findViewById(R.id.bottomNavigation);
+
         navView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.typesnav) {
-                Toast.makeText(PokemonTypeLibraryActivity.this, "Types", Toast.LENGTH_SHORT).show();
-                return true; // Already here
-            } else if (id== R.id.homefavnav) {
-                
+                Toast.makeText(this, "Types", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (id == R.id.homefavnav) {
+                Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
+                // TODO: Navigate to Favorites screen
+                return true;
             } else if (id == R.id.homenav) {
-                Toast.makeText(PokemonTypeLibraryActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PokemonTypeLibraryActivity.this, Pokedex.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); // Bring Pokedex to front without restarting it
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, Pokedex.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (id == R.id.logoutnav) {
-                Toast.makeText(PokemonTypeLibraryActivity.this, "Logout", Toast.LENGTH_SHORT).show();
-                getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
-                        .edit()
-                        .clear()
-                        .apply();
-                Toast.makeText(PokemonTypeLibraryActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PokemonTypeLibraryActivity.this, MainActivity.class);
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+                getSharedPreferences("MyAppPrefs", MODE_PRIVATE).edit().clear().apply();
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -109,8 +106,7 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                runOnUiThread(() ->
-                        Toast.makeText(PokemonTypeLibraryActivity.this, "Failed to load types", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(PokemonTypeLibraryActivity.this, "Failed to load types", Toast.LENGTH_SHORT).show());
             }
 
             @Override
@@ -136,7 +132,6 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
     }
 
     private void loadPokemonByType(String typeName) {
-        typeClicked = true;
         showMessage("Loading Pokémon...");
 
         pokemonList.clear();
@@ -149,8 +144,7 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                runOnUiThread(() ->
-                        Toast.makeText(PokemonTypeLibraryActivity.this, "Failed to load Pokémon", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(PokemonTypeLibraryActivity.this, "Failed to load Pokémon", Toast.LENGTH_SHORT).show());
             }
 
             @Override

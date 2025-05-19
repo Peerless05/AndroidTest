@@ -69,21 +69,30 @@ public class Pokedex extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.typesnav) {
-                Toast.makeText(Pokedex.this, "Types", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Types", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
                 startActivity(intent);
                 return true;
+
             } else if (id == R.id.homefavnav) {
-                Toast.makeText(Pokedex.this, "Favorites", Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
+                // Navigate to Favorites Activity
+                Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
+                //Intent intent = new Intent(Pokedex.this, FavoritesActivity.class); // Make sure you create this activity
                 //startActivity(intent);
-                Toast.makeText(Pokedex.this, "Home", Toast.LENGTH_SHORT).show();
+                return true;
+
+            } else if (id == R.id.homenav) {
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, Pokedex.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 return true;
             } else if (id == R.id.clearnav) {
-                Toast.makeText(Pokedex.this, "Clear", Toast.LENGTH_SHORT).show();
                 resetUI();
+                Toast.makeText(Pokedex.this, "Cleared", Toast.LENGTH_SHORT).show();
+                return true;
+
             } else if (id == R.id.logoutnav) {
-                Toast.makeText(Pokedex.this, "Logout", Toast.LENGTH_SHORT).show();
                 getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
                         .edit()
                         .clear()
@@ -95,8 +104,10 @@ public class Pokedex extends AppCompatActivity {
                 finish();
                 return true;
             }
+
             return false;
         });
+
 
         search.setOnClickListener(v -> {
             String query = input.getText().toString().trim();
