@@ -72,21 +72,21 @@ public class PokemonTypeLibraryActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.typesnav) {
-                Toast.makeText(this, "Types", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Types", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (id == R.id.homefavnav) {
-                Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, FavoritesActivity.class);
                 startActivity(intent);
                 return true;
             } else if (id == R.id.homenav) {
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, Pokedex.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (id == R.id.logoutnav) {
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
                 getSharedPreferences("MyAppPrefs", MODE_PRIVATE).edit().clear().apply();
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

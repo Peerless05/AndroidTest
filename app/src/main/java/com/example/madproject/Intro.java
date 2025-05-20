@@ -47,14 +47,14 @@ public class Intro extends AppCompatActivity {
 
         loginText.setOnClickListener(v -> {
             stopMusic();
-            Toast.makeText(Intro.this, "Login clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(Intro.this, "Login clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Intro.this, MainActivity.class));
             finish(); // Optional: closes Intro to prevent returning to it
         });
 
         accBtn.setOnClickListener(v -> {
             stopMusic();
-            Toast.makeText(Intro.this, "Register clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(Intro.this, "Register clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Intro.this, Register.class));
             finish(); // Optional
         });

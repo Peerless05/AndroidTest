@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                                             String storedUsername = documentSnapshot.getString("username");
                                             if (storedUsername != null && storedUsername.equals(enteredUsername)) {
                                                 stopMusic();
-                                                Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                                                //Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(MainActivity.this, Pokedex.class));
                                                 finish();
                                             } else {

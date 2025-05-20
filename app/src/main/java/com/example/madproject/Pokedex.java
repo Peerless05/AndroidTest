@@ -72,24 +72,24 @@ public class Pokedex extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.typesnav) {
-                Toast.makeText(this, "Types", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "Types", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Pokedex.this, PokemonTypeLibraryActivity.class);
                 startActivity(intent);
                 return true;
             } else if (id == R.id.homefavnav) {
                 // Navigate to Favorites Activity
-                Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Favorites", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, FavoritesActivity.class));
                 return true;
             } else if (id == R.id.homenav) {
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, Pokedex.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;
             } else if (id == R.id.clearnav) {
                 resetUI();
-                Toast.makeText(Pokedex.this, "Cleared", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Pokedex.this, "Cleared", Toast.LENGTH_SHORT).show();
                 return true;
 
             } else if (id == R.id.logoutnav) {
@@ -97,7 +97,7 @@ public class Pokedex extends AppCompatActivity {
                         .edit()
                         .clear()
                         .apply();
-                Toast.makeText(Pokedex.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Pokedex.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Pokedex.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -122,7 +122,7 @@ public class Pokedex extends AppCompatActivity {
             String name = nameText.getText().toString().replace("NAME 👆: ", "");
             if (!name.equals("Name")) {
                 saveToFavorites(name);
-                Toast.makeText(Pokedex.this, name + " added to favorites!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Pokedex.this, name + " Added to Favorites!", Toast.LENGTH_SHORT).show();
             }
         });
 
